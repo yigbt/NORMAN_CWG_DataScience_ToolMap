@@ -50,6 +50,9 @@ jobs:
           branch: ${{ steps.parse.outputs.branch }}
           title: ${{ steps.parse.outputs.title }}
           add-paths: catalogue/**
+          # Fixed bot author: otherwise whoever last edited the issue (e.g. a curator) would appear as author.
+          # The submitter is credited via the Co-authored-by trailer.
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           labels: needs-curator
           delete-branch: true
           commit-message: |
