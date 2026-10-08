@@ -39,6 +39,25 @@ def test_git_history_parses_coauthors_and_pr(tmp_path, monkeypatch):
     assert hist[0]["author"] == "Curator" and hist[0]["coauthors"] == ["octocat"] and hist[0]["pr"] == 12
 
 
+def test_git_history_pr_from_merge_commit(tmp_path, monkeypatch):
+    import build
+    repo = tmp_path
+    run = lambda *a: subprocess.run(["git", "-C", str(repo), *a], check=True, capture_output=True)
+    run("init", "-q", "-b", "main")
+    run("config", "user.email", "curator@example.org")
+    run("config", "user.name", "Curator")
+    run("commit", "-q", "--allow-empty", "-m", "start")
+    run("checkout", "-q", "-b", "submission/issue-1")
+    (repo / "y.yaml").write_text("a: 1\n")
+    run("add", "y.yaml")
+    run("commit", "-q", "-m", "Add tool: Y", "-m", "Submitted in #1.")
+    run("checkout", "-q", "main")
+    run("merge", "-q", "--no-ff", "submission/issue-1", "-m", "Merge pull request #7 from org/submission/issue-1")
+    monkeypatch.setattr(build, "ROOT", repo)
+    hist = git_history("y.yaml")
+    assert len(hist) == 1 and hist[0]["message"] == "Add tool: Y" and hist[0]["pr"] == 7
+
+
 def test_git_history_outside_repo_is_empty(tmp_path, monkeypatch):
     import build
     monkeypatch.setattr(build, "ROOT", tmp_path)

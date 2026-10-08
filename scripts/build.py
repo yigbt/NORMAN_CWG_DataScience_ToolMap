@@ -16,8 +16,36 @@ COAUTHOR = re.compile(r"^Co-authored-by:\s*(.+?)\s*<", re.MULTILINE)
 PR_REF = re.compile(r"(?:Merge pull request #|\(#)(\d+)")
 
 
+def _git(*args):
+    return subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True, check=True).stdout
+
+
+_MERGED_BY = {}
+
+
+def merged_by_pr(root=None):
+    """{commit sha: PR number} for commits that reached the main line through a "Merge pull request #N" commit."""
+    root = str(root or ROOT)
+    if root not in _MERGED_BY:
+        prs = {}
+        try:
+            for line in _git("log", "--first-parent", "--merges", "--format=%H%x1f%P%x1f%s").splitlines():
+                sha, parents, subject = line.split("\x1f", 2)
+                m, parents = PR_REF.search(subject), parents.split()
+                if m and len(parents) > 1:
+                    for c in _git("rev-list", f"{parents[0]}..{parents[1]}").split():
+                        prs[c] = int(m.group(1))
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            pass
+        _MERGED_BY[root] = prs
+    return _MERGED_BY[root]
+
+
 def git_history(rel_path):
-    """List of {date, author, coauthors, message, sha, pr} for one file, newest first ([] outside git)."""
+    """List of {date, author, coauthors, message, sha, pr} for one file, newest first ([] outside git).
+
+    The PR number comes from the commit itself (squash merge: "... (#N)") or from the merge commit that brought it
+    in (merge commits are not listed by `git log -- path`, so they are looked up separately)."""
     try:
         out = subprocess.run(
             ["git", "-C", str(ROOT), "log", "--follow", "--format=%H%x1f%an%x1f%aI%x1f%s%x1f%b%x1e", "--", rel_path],
@@ -29,7 +57,8 @@ def git_history(rel_path):
         sha, author, when, subject, body = (rec.strip("\n").split("\x1f") + [""] * 5)[:5]
         pr = PR_REF.search(subject) or PR_REF.search(body)
         hist.append({"sha": sha, "author": author, "date": when[:10], "message": subject,
-                     "coauthors": COAUTHOR.findall(body), "pr": int(pr.group(1)) if pr else None})
+                     "coauthors": [c for c in dict.fromkeys(COAUTHOR.findall(body)) if c != author],
+                     "pr": int(pr.group(1)) if pr else merged_by_pr().get(sha)})
     return hist
 
 
