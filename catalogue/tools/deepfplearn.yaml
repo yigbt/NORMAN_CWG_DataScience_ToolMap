@@ -1,0 +1,42 @@
+id: deepfplearn
+name: deepFPlearn
+kind: tool
+description: Predict the activity of chemicals (their molecular structures) toward biological endpoints,
+  e.g. hormone receptors.
+endpoints:
+- toxicity
+- endocrine_moa
+research_questions:
+- rq-endocrine-moa
+- rq-toxicity
+methods:
+- machine_learning
+- deep_learning
+input_data:
+- chemical_structure
+output: |-
+  A prediction probability between 0 and 1 for androgen receptor or Estrogen receptor activity, where 1 means active and 0 inactive.
+  Own models can be trained if the respective training data is available
+availability:
+- python_package
+- standalone
+- code_repository
+license: MIT
+url: https://www.ufz.de/index.php?en=51707
+code_url: https://github.com/yigbt/deepFPlearn
+publications:
+- 10.1093/bioinformatics/btad713
+- 10.5281/zenodo.8146252
+- 10.1093/bib/bbac257
+maturity: published
+verification: owner_verified
+notes: |-
+  There is ongoing work on this approach towards integrating
+  - explainability
+  - quantification of uncertainty
+  - regression models
+  - additional models for further endpoints
+provenance:
+  source: submission
+  added: '2026-10-08'
+  issue: 1
