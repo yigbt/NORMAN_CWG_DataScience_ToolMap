@@ -1,0 +1,30 @@
+id: ms2quant
+name: MS2Quant
+kind: model
+description: MS2Quant is a machine learning-based tool for estimating concentrations of unidentified small
+  molecules detected in non-target LC-HRMS analysis. It predicts electrospray ionization efficiency from
+  molecular structural fingerprints, which can be obtained directly from MS2 spectra using SIRIUS+CSI:FingerID.
+  These predictions are converted into instrument-specific response factors using experimentally measured
+  calibrants, enabling concentration estimation without requiring unequivocal chemical identification.
+endpoints:
+- semi_quantification
+research_questions:
+- rq-semi-quantification
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+- hrms_data
+- metadata
+output: Predicted concentration.
+availability:
+- r_package
+code_url: https://github.com/kruvelab/MS2Quant
+publications:
+- 10.1021/acs.analchem.3c01744
+maturity: published
+verification: owner_verified
+provenance:
+  source: submission
+  added: '2026-10-08'
+  issue: 3
