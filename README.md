@@ -4,6 +4,8 @@ A browser-based catalogue and map of data science and AI tools for monitoring em
 maintained by the NORMAN Data Science working group. It answers two questions from the WG survey (Nov 2025):
 *which tools exist?* and *which research questions do they address, and where are the gaps?*
 
+**Website:** https://yigbt.github.io/NORMAN_CWG_DataScience_ToolMap/
+
 **Views:** Catalogue (filterable cards) · Questions × tools (matrix) · Network (graph) · Roadmap & gaps.
 
 ## How it works
@@ -46,15 +48,7 @@ python -m http.server -d site 8000       # open http://localhost:8000
 pytest -q tests
 ```
 
-## One-time GitHub setup (repository admin)
-
-1. Create the repository (e.g. in a NORMAN organisation) and push this folder as its root.
-2. Set `repo:` in `config.yaml` to `OWNER/REPO`; put the curators' handles in `.github/CODEOWNERS`; replace
-   `OWNER/REPO` in this README ("How to cite") and fill in the commented URLs in `CITATION.cff`.
-3. **Settings → Pages:** Source = *GitHub Actions*.
-4. **Settings → Actions → General:** Workflow permissions = *Read and write*; tick *Allow GitHub Actions to create and approve pull requests*.
-5. **Settings → Branches:** protect `main` — require a pull request, 1 approval, review from Code Owners, and the *Validate catalogue* check.
-6. Create the labels `submission` and `needs-curator` (Issues → Labels).
+## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contributors and curators.
 
