@@ -33,3 +33,11 @@ def test_seeded_entries_are_flagged_and_linked():
 def test_vocab_labels_are_strings():
     for name, terms in load_vocab().items():
         assert all(isinstance(k, str) and isinstance(v, str) for k, v in terms.items()), name
+
+
+def test_multiline_strings_dumped_as_literal_blocks():
+    from catalogue_lib import dump_yaml, load_yaml
+    entry = {"notes": "first line\n- item one\n- item two", "name": "single line"}
+    out = dump_yaml(entry)
+    assert "notes: |-\n  first line\n  - item one\n" in out
+    assert load_yaml(out) == entry

@@ -78,8 +78,22 @@ def schema_errors(etype, entry, vals=None):
             for e in sorted(vals[etype].iter_errors(entry), key=lambda e: list(e.absolute_path))]
 
 
+class _BlockDumper(yaml.SafeDumper):
+    """Writes multi-line strings as literal blocks (|) so YAML files and pull-request diffs stay readable."""
+
+
+def _str_representer(dumper, s):
+    if "\n" in s:
+        s = "\n".join(line.rstrip() for line in s.splitlines())
+        return dumper.represent_scalar("tag:yaml.org,2002:str", s, style="|")
+    return dumper.represent_scalar("tag:yaml.org,2002:str", s)
+
+
+_BlockDumper.add_representer(str, _str_representer)
+
+
 def dump_yaml(entry):
-    return yaml.safe_dump(entry, sort_keys=False, allow_unicode=True, width=100)
+    return yaml.dump(entry, Dumper=_BlockDumper, sort_keys=False, allow_unicode=True, width=100)
 
 
 def load_catalogue(root=CATALOGUE):
