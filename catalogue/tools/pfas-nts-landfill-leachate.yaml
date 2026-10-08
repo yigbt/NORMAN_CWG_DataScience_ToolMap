@@ -1,0 +1,20 @@
+id: pfas-nts-landfill-leachate
+name: Suspect and non-target screening workflow for PFAS and halogenated substances
+kind: workflow
+description: Suspect and non-target screening of PFAS and other halogenated substances, including transformation
+  products formed during electrochemical treatment of landfill leachate and groundwater.
+endpoints:
+- transformation_products
+- hrms_data_processing
+research_questions:
+- rq-hrms-data-representation
+- rq-transformation-products
+input_data:
+- hrms_data
+publications:
+- 10.1016/j.jhazmat.2024.136316
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

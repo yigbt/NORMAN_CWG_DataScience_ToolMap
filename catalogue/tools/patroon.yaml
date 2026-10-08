@@ -1,0 +1,25 @@
+id: patroon
+name: patRoon
+kind: workflow
+description: Open-source R platform for mass spectrometry based non-target analysis, from feature detection
+  to annotation, including automated transformation product screening (v2.0).
+endpoints:
+- transformation_products
+- hrms_data_processing
+research_questions:
+- rq-hrms-data-representation
+- rq-transformation-products
+input_data:
+- hrms_data
+availability:
+- r_package
+- code_repository
+code_url: https://github.com/rickhelmus/patRoon
+publications:
+- 10.1186/s13321-020-00477-w
+- 10.21105/joss.04029
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

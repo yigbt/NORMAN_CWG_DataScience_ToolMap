@@ -1,0 +1,20 @@
+id: ccs-ann-prediction
+name: CCS prediction with artificial neural networks
+kind: model
+description: Artificial neural network prediction of collision cross-section values for small molecules,
+  applied to pesticide residue analysis.
+endpoints:
+- analytical_information
+research_questions:
+- rq-analytical-information
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+publications:
+- 10.1021/acs.analchem.7b00741
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

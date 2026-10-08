@@ -1,0 +1,61 @@
+name: Propose a new tool
+description: Add a data science / AI tool, model or resource to the catalogue.
+title: "[Tool] "
+labels: [submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the YAML below (or use the form on the tool map website, which fills it for you).
+        A bot validates your submission and opens a pull request; a curator reviews it before it goes live.
+        All submissions and discussions are public and kept in the history of this repository.
+  - type: dropdown
+    id: entry_type
+    attributes:
+      label: Entry type
+      options: [Tool, Research question, Dataset, Publication]
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: change
+    attributes:
+      label: Change
+      options: [New entry, Edit existing entry]
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: entry_yaml
+    attributes:
+      label: Entry (YAML)
+      description: One entry. Field definitions are in the schema/ folder, allowed values in vocab.yaml.
+      render: yaml
+      value: |
+        id: my-tool-name            # lower case, words separated by '-'
+        name: My tool name
+        kind: tool                   # tool | model | workflow | database | review | other
+        description: What the tool does, for whom, and on which data.
+        endpoints: [toxicity]        # see vocab.yaml, e.g. toxicity, persistence, transformation_products, semi_quantification
+        research_questions: [rq-toxicity]
+        methods: [machine_learning]
+        input_data: [chemical_structure]
+        availability: [web_app]
+        url: https://example.org
+        publications: [10.xxxx/xxxxx]   # DOIs in lower case; publication details are fetched automatically
+        maturity: published          # concept | prototype | published | validated | regulatory_use
+        verification: owner_verified # owner_verified if you maintain the tool, otherwise seeded_unverified
+    validations:
+      required: true
+  - type: input
+    id: on_behalf_of
+    attributes:
+      label: On behalf of
+      description: Optional – if you submit for someone without a GitHub account (name, affiliation).
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I agree that this information is published, and anyone named as contact has agreed to be listed.
+          required: true

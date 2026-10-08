@@ -1,0 +1,97 @@
+# Controlled vocabularies (single source of truth).
+# Schemas reference these lists via {"$vocab": "<name>"}; the site uses the labels.
+# Adding a term is a normal moderated change (PR reviewed by a curator).
+
+endpoints:  # what a tool predicts / supports; mirrors survey Q6 and Q8 options
+  toxicity: Toxicity
+  persistence: Persistence
+  bioaccumulation: Bioaccumulation
+  transformation_products: Transformation products
+  semi_quantification: Semi-quantification
+  chemical_properties: Chemical properties
+  analytical_information: Analytical information (RT, CCS, ionisation)
+  antimicrobial: Antimicrobial properties
+  endocrine_moa: Endocrine activity / modes of action
+  hrms_data_processing: HRMS data processing & representation
+  data_curation: Data curation & metadata
+  other: Other
+
+kinds:
+  tool: Software tool
+  model: Predictive model
+  workflow: Workflow / platform
+  database: Database / dataset
+  review: Review / perspective
+  other: Other
+
+methods:
+  qsar: QSAR / QSPR
+  machine_learning: Machine learning
+  deep_learning: Deep learning
+  explainable_ai: Explainable AI
+  nlp: NLP / language models
+  mechanistic: Mechanistic / physico-chemical model
+  statistical: Statistical model
+  rule_based: Rule-based / expert system
+  other: Other
+
+input_data:
+  chemical_structure: Chemical structure (SMILES, descriptors)
+  hrms_data: HRMS raw data / spectra
+  chromatographic_data: Chromatographic data
+  monitoring_data: Environmental monitoring data
+  experimental_data: Experimental (eco)tox / property data
+  metadata: Metadata
+  text: Text / literature
+  other: Other
+
+availability:
+  web_app: Web application
+  r_package: R package
+  python_package: Python package
+  standalone: Standalone software
+  code_repository: Code repository
+  on_request: On request
+  not_available: Not publicly available
+  unknown: Unknown
+
+maturity:
+  concept: Concept
+  prototype: Prototype
+  published: Published
+  validated: Independently validated
+  regulatory_use: Used in regulatory context
+
+verification:
+  seeded_unverified: Seeded from survey – please verify
+  owner_verified: Verified by tool owner
+  curator_checked: Checked by curator
+
+rq_categories:
+  prediction: Prediction need
+  cross_cutting: Cross-cutting topic
+
+roadmap_status:
+  not_started: Not started
+  scoping: Scoping
+  in_progress: In progress
+  established: Established
+
+priority:
+  high: High
+  medium: Medium
+  low: Low
+
+matrices:
+  surface_water: Surface water
+  wastewater: Wastewater
+  groundwater: Groundwater
+  drinking_water: Drinking water
+  sediment_spm: Sediment / SPM
+  soil: Soil
+  biota: Biota
+  human: Human samples
+  food: Food
+  air: Air
+  passive_sampler: Passive sampler extracts
+  other: Other

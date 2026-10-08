@@ -1,0 +1,22 @@
+id: map4-fingerprint
+name: MAP4 molecular fingerprint
+kind: tool
+description: MinHashed atom-pair fingerprint performing well for small molecules, biomolecules and the
+  metabolome, for virtual screening and chemical space mapping.
+endpoints:
+- chemical_properties
+research_questions:
+- rq-chemical-properties
+input_data:
+- chemical_structure
+availability:
+- python_package
+- code_repository
+code_url: https://github.com/reymond-group/map4
+publications:
+- 10.1186/s13321-020-00445-4
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

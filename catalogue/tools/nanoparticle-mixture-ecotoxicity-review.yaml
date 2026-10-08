@@ -1,0 +1,16 @@
+id: nanoparticle-mixture-ecotoxicity-review
+name: Ecotoxicity of mixtures of nanoparticles and hybrid nanomaterials (review)
+kind: review
+description: Review of the joint toxicity of multiple engineered nanoparticles and prospects for predicting
+  mixture toxicity.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+publications:
+- 10.1021/acs.est.2c03333
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

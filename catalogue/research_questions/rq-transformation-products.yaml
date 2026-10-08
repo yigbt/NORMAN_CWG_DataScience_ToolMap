@@ -1,0 +1,18 @@
+id: rq-transformation-products
+title: How can transformation products of emerging substances be predicted?
+short_title: Transformation products
+description: Predict (bio)transformation and abiotic transformation products and pathways to support suspect
+  screening and risk assessment.
+category: prediction
+endpoint: transformation_products
+survey_demand:
+  q8_need: 19
+  q6_have_tool: 4
+  q8_respondents: 34
+roadmap:
+  status: not_started
+  priority: high
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

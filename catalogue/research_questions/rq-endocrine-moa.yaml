@@ -1,0 +1,14 @@
+id: rq-endocrine-moa
+title: How can specific modes of action such as endocrine disruption be predicted?
+short_title: Endocrine / mode of action
+description: AI tools for specific modes of action, e.g. endocrine activity (raised as 'Other' in survey
+  Q9).
+category: prediction
+endpoint: endocrine_moa
+roadmap:
+  status: not_started
+  priority: low
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

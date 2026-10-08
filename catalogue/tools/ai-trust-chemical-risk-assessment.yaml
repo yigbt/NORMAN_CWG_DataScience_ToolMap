@@ -1,0 +1,18 @@
+id: ai-trust-chemical-risk-assessment
+name: Trust in AI for chemical risk assessment (perspective)
+kind: review
+description: Analysis of why AI/ML models lag behind in regulatory chemical risk assessment and how trust
+  can be built.
+endpoints:
+- other
+research_questions:
+- cc-ai-risks-trust
+methods:
+- explainable_ai
+publications:
+- 10.1016/j.yrtph.2024.105589
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

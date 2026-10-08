@@ -1,0 +1,22 @@
+id: wwtp-micropollutant-removal-models
+name: Benchmark data and models for micropollutant removal in wastewater treatment
+kind: model
+description: Benchmark dataset and structure-based models predicting micropollutant removal (breakthrough)
+  in wastewater treatment plants as an indicator of persistence.
+endpoints:
+- persistence
+research_questions:
+- rq-persistence
+- cc-tool-benchmarking
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+- monitoring_data
+publications:
+- 10.1021/acs.est.5c09314
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,23 @@
+id: rt-ann-suspect-screening
+name: ANN retention time prediction for large-scale suspect screening
+kind: model
+description: Artificial neural network retention time prediction combined with HRMS data analysis for
+  suspect screening of large numbers of emerging contaminants in environmental waters.
+endpoints:
+- analytical_information
+- hrms_data_processing
+research_questions:
+- rq-analytical-information
+- rq-hrms-data-representation
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+- hrms_data
+publications:
+- 10.1016/j.scitotenv.2015.08.078
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

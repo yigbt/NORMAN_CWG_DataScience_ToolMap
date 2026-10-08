@@ -1,0 +1,20 @@
+id: rt-ccs-mars-prediction
+name: Retention time and CCS prediction with multiple adaptive regression splines
+kind: model
+description: Prediction of retention time and collision cross-section (protonated, deprotonated, sodiated)
+  of emerging contaminants to support suspect and non-target screening by LC-IMS-HRMS.
+endpoints:
+- analytical_information
+research_questions:
+- rq-analytical-information
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+publications:
+- 10.1021/acs.jcim.2c00847
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

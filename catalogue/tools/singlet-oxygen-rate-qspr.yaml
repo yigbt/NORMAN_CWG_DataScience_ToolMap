@@ -1,0 +1,21 @@
+id: singlet-oxygen-rate-qspr
+name: Singlet oxygen photooxygenation rate prediction
+kind: model
+description: Cheminformatics models predicting aqueous-phase photooxygenation rate constants by singlet
+  oxygen from orbital energies, substituent factors and QSPR.
+endpoints:
+- persistence
+research_questions:
+- rq-persistence
+methods:
+- qsar
+- mechanistic
+input_data:
+- chemical_structure
+publications:
+- 10.1071/en17155
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,18 @@
+id: ml-nanotoxicology-review
+name: Machine learning in nanotoxicology (review)
+kind: review
+description: Critical review and perspective on machine learning methods for predicting adverse effects
+  of nanomaterials.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- machine_learning
+publications:
+- 10.1021/acs.est.4c03328
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

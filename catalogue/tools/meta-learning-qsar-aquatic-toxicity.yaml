@@ -1,0 +1,22 @@
+id: meta-learning-qsar-aquatic-toxicity
+name: Meta-learning QSAR models for aquatic toxicity
+kind: model
+description: Comparison of meta-learning QSAR approaches for low-resource aquatic toxicity regression
+  tasks.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- qsar
+- machine_learning
+input_data:
+- chemical_structure
+- experimental_data
+publications:
+- 10.1021/acs.est.3c00334
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

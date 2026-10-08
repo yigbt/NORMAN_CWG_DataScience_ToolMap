@@ -1,0 +1,21 @@
+id: hrms-mass-accuracy-suitability
+name: Long-term HRMS mass accuracy system suitability evaluation
+kind: workflow
+description: Practical approach to evaluate and maintain mass accuracy of HRMS instruments over time for
+  reliable non-target and suspect screening.
+endpoints:
+- hrms_data_processing
+research_questions:
+- rq-hrms-data-representation
+- cc-qa-qc-reference-data
+methods:
+- statistical
+input_data:
+- hrms_data
+publications:
+- 10.1021/jasms.5c00128
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

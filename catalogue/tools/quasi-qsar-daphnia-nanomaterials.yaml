@@ -1,0 +1,20 @@
+id: quasi-qsar-daphnia-nanomaterials
+name: Quasi-QSAR for Daphnia magna immobilisation by metal-based nanomaterials
+kind: model
+description: Quasi-QSAR models estimating Hill coefficients to predict the immobilisation response of
+  Daphnia magna exposed to metal-based nanomaterials.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- qsar
+input_data:
+- experimental_data
+publications:
+- 10.1002/etc.5322
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

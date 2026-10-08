@@ -1,0 +1,16 @@
+id: hazard-prediction-toolbox
+name: Hazard Prediction Toolbox
+kind: tool
+description: Toolbox for hazard prediction of chemicals (presented as a SETAC 2024 poster; no DOI yet).
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- machine_learning
+url: https://mistrasafechem.se/download/18.4710b08218f379fd242221b3/1715686503096/Hazard%20Prediction%20Toolbox%20-%20Setac%202024%20poster.pdf
+maturity: prototype
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

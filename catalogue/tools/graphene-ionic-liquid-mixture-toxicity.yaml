@@ -1,0 +1,20 @@
+id: graphene-ionic-liquid-mixture-toxicity
+name: Joint algal toxicity of graphene and ionic liquid mixtures
+kind: model
+description: Assessment and prediction of the joint algal toxicity of binary mixtures of graphene and
+  ionic liquids.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- statistical
+input_data:
+- experimental_data
+publications:
+- 10.1016/j.chemosphere.2017.07.035
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

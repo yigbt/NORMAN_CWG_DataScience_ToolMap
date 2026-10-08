@@ -1,0 +1,18 @@
+id: qppr-nanomaterials-directions
+name: Directions in QPPR development for nanomaterial risk assessment
+kind: review
+description: Perspective on quantitative property-property relationships to complement predictive models
+  used in nanomaterial risk assessment.
+endpoints:
+- chemical_properties
+research_questions:
+- rq-chemical-properties
+methods:
+- qsar
+publications:
+- 10.1016/j.impact.2018.02.003
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

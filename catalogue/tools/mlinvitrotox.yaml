@@ -1,0 +1,25 @@
+id: mlinvitrotox
+name: MLinvitroTox
+kind: tool
+description: Automated Python pipeline for high-throughput, hazard-driven prioritisation of signals in
+  HRMS/MS data, using hundreds of ML classifiers trained on in vitro toxicity data.
+endpoints:
+- toxicity
+- hrms_data_processing
+research_questions:
+- rq-toxicity
+- rq-hrms-data-representation
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+- hrms_data
+availability:
+- python_package
+publications:
+- 10.1186/s13321-025-00950-4
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

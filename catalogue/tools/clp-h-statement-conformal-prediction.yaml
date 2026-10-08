@@ -1,0 +1,21 @@
+id: clp-h-statement-conformal-prediction
+name: Conformal prediction of CLP H-statements
+kind: model
+description: Machine learning prediction of CLP hazard statements with confidence, using conformal prediction
+  with N-grams and molecular fingerprints.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+- cc-ai-risks-trust
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+publications:
+- 10.1016/j.crtox.2025.100242
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

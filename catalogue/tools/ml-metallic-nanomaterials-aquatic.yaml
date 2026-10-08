@@ -1,0 +1,20 @@
+id: ml-metallic-nanomaterials-aquatic
+name: ML prediction of adverse effects of metallic nanomaterials on aquatic organisms
+kind: model
+description: Machine learning models predicting (eco)toxicity of metallic nanomaterials across aquatic
+  species and environmental conditions.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- machine_learning
+input_data:
+- experimental_data
+publications:
+- 10.1021/acs.est.2c07039
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,18 @@
+id: rq-semi-quantification
+title: How can concentrations be estimated without reference standards?
+short_title: Semi-quantification
+description: Semi-quantification of substances detected by (LC-)HRMS non-target screening, e.g. via ionisation
+  efficiency prediction.
+category: prediction
+endpoint: semi_quantification
+survey_demand:
+  q8_need: 15
+  q6_have_tool: 3
+  q8_respondents: 34
+roadmap:
+  status: not_started
+  priority: high
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

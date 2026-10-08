@@ -1,0 +1,14 @@
+id: cc-qa-qc-reference-data
+title: Which QA/QC criteria and reference datasets should data science in environmental monitoring follow?
+short_title: QA/QC & reference data
+description: Best-practice parameters and criteria, high-quality reference and training datasets, and
+  data curation (survey Q5; data access was the second most named barrier in Q12).
+category: cross_cutting
+endpoint: data_curation
+roadmap:
+  status: not_started
+  priority: high
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

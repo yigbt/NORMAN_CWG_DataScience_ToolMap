@@ -1,0 +1,20 @@
+id: oh-radical-rate-qsar
+name: QSAR for aqueous hydroxyl radical reaction rate constants
+kind: model
+description: QSAR model predicting aqueous reaction rate constants of organic chemicals with hydroxyl
+  radicals.
+endpoints:
+- persistence
+research_questions:
+- rq-persistence
+methods:
+- qsar
+input_data:
+- chemical_structure
+publications:
+- 10.1039/c6em00707d
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

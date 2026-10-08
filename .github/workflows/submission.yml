@@ -1,0 +1,85 @@
+# Issue (label "submission") -> validated YAML -> pull request for curator review.
+# Security: the issue body is untrusted. It is only read from the event file by issue_to_entry.py and is
+# never interpolated into a shell command. Repository setting required:
+# Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+name: Submission to pull request
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+concurrency:
+  group: submission-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  submission:
+    if: contains(github.event.issue.labels.*.name, 'submission') && github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Parse and validate submission
+        id: parse
+        run: |
+          uv run --no-project --with-requirements requirements.txt \
+            python scripts/issue_to_entry.py --event "$GITHUB_EVENT_PATH" --summary "$RUNNER_TEMP/summary.json"
+          python3 - <<'PY'
+          import json, os
+          s = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], "summary.json")))
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"ok={'true' if s['ok'] else 'false'}\n")
+              if s["ok"]:
+                  f.write(f"branch={s['branch']}\n")
+                  f.write(f"title={s['title'].replace(chr(10), ' ')}\n")
+          PY
+      - name: Rebuild check
+        if: steps.parse.outputs.ok == 'true'
+        run: uv run --no-project --with-requirements requirements.txt python scripts/build.py --check
+      - name: Open or update pull request
+        if: steps.parse.outputs.ok == 'true'
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ${{ steps.parse.outputs.branch }}
+          title: ${{ steps.parse.outputs.title }}
+          add-paths: catalogue/**
+          labels: needs-curator
+          delete-branch: true
+          commit-message: |
+            ${{ steps.parse.outputs.title }}
+
+            Submitted in #${{ github.event.issue.number }}.
+
+            Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
+          body: |
+            Closes #${{ github.event.issue.number }}
+
+            Submitted by @${{ github.event.issue.user.login }}. Validated automatically against the schema.
+
+            **Curator checklist**
+            - [ ] Content is accurate and in scope
+            - [ ] Categories (endpoints, research questions, maturity) are sensible
+            - [ ] Contacts listed have agreed to be named
+            - [ ] `verification` is appropriate (set `curator_checked` here if checked)
+      - name: Report back on the issue
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          PR_URL: ${{ steps.pr.outputs.pull-request-url }}
+        with:
+          script: |
+            const fs = require('fs');
+            const p = `${process.env.RUNNER_TEMP}/summary.json`;
+            if (!fs.existsSync(p)) return;
+            const s = JSON.parse(fs.readFileSync(p, 'utf8'));
+            const body = s.ok
+              ? `Thanks! Your submission is valid and is now waiting for curator review: ${process.env.PR_URL || '(pull request)'}`
+              : 'Your submission could not be processed yet. Please edit the issue to fix the following, and the check runs again automatically:\n\n'
+                + s.errors.map(e => '- ' + e.replace(/[`<>]/g, '')).join('\n');
+            await github.rest.issues.createComment({...context.repo, issue_number: context.issue.number, body});

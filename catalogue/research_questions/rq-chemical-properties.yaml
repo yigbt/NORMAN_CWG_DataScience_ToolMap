@@ -1,0 +1,18 @@
+id: rq-chemical-properties
+title: How can physico-chemical properties and molecular representations be predicted?
+short_title: Chemical properties
+description: Prediction of physico-chemical properties and development of molecular representations used
+  by downstream models.
+category: prediction
+endpoint: chemical_properties
+survey_demand:
+  q8_need: 10
+  q6_have_tool: 5
+  q8_respondents: 34
+roadmap:
+  status: not_started
+  priority: medium
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

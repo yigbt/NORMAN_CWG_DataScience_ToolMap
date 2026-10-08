@@ -1,0 +1,17 @@
+id: qsar-nanoparticles-review
+name: QSAR approaches for nanoparticles (review)
+kind: review
+description: Review of challenges and approaches in applying QSAR methods to nanoscale systems.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- qsar
+publications:
+- 10.1177/026119291404200107
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

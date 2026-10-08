@@ -1,0 +1,57 @@
+name: Propose a research question
+description: Add a research question or cross-cutting topic to the roadmap.
+title: "[Research question] "
+labels: [submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill in the YAML below (or use the form on the tool map website, which fills it for you).
+        A bot validates your submission and opens a pull request; a curator reviews it before it goes live.
+        All submissions and discussions are public and kept in the history of this repository.
+  - type: dropdown
+    id: entry_type
+    attributes:
+      label: Entry type
+      options: [Tool, Research question, Dataset, Publication]
+      default: 1
+    validations:
+      required: true
+  - type: dropdown
+    id: change
+    attributes:
+      label: Change
+      options: [New entry, Edit existing entry]
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: entry_yaml
+    attributes:
+      label: Entry (YAML)
+      description: One entry. Field definitions are in the schema/ folder, allowed values in vocab.yaml.
+      render: yaml
+      value: |
+        id: rq-my-question
+        title: How can ... be predicted?
+        description: Background and why it matters for monitoring of emerging substances.
+        category: prediction         # prediction | cross_cutting
+        endpoint: toxicity           # optional, see vocab.yaml
+        roadmap:
+          status: not_started        # not_started | scoping | in_progress | established
+          priority: medium           # high | medium | low (curators may adjust)
+          next_steps: []
+    validations:
+      required: true
+  - type: input
+    id: on_behalf_of
+    attributes:
+      label: On behalf of
+      description: Optional – if you submit for someone without a GitHub account (name, affiliation).
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I agree that this information is published, and anyone named as contact has agreed to be listed.
+          required: true

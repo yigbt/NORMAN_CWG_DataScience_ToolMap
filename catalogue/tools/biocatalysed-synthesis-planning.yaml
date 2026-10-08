@@ -1,0 +1,20 @@
+id: biocatalysed-synthesis-planning
+name: Data-driven biocatalysed synthesis planning
+kind: model
+description: Data-driven learning of enzymatic reactions for retrosynthetic planning, applicable to predicting
+  enzyme-catalysed transformations.
+endpoints:
+- transformation_products
+research_questions:
+- rq-transformation-products
+methods:
+- deep_learning
+input_data:
+- chemical_structure
+publications:
+- 10.1038/s41467-022-28536-w
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

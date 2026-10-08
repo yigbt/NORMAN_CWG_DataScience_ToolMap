@@ -1,0 +1,20 @@
+id: molecular-set-representation-learning
+name: Molecular set representation learning
+kind: model
+description: Representing molecules as sets of atom invariants for learning, as an alternative to graph
+  or string representations in downstream property models.
+endpoints:
+- chemical_properties
+research_questions:
+- rq-chemical-properties
+methods:
+- deep_learning
+input_data:
+- chemical_structure
+publications:
+- 10.1038/s42256-024-00856-0
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

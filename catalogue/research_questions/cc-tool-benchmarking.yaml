@@ -1,0 +1,13 @@
+id: cc-tool-benchmarking
+title: How do existing tools compare on common benchmarks?
+short_title: Tool benchmarking
+description: Systematic comparison of available tools (e.g. toxicity or retention time predictors) on
+  shared reference datasets (survey Q5).
+category: cross_cutting
+roadmap:
+  status: not_started
+  priority: medium
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

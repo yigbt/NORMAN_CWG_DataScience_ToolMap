@@ -1,0 +1,21 @@
+id: ecotoxicity-recommender-system
+name: Recommender-system prediction of species–chemical ecotoxicity
+kind: model
+description: Predicts ecotoxicity of chemicals for aquatic species with recommender system techniques,
+  generalising across chemicals and species.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- machine_learning
+input_data:
+- chemical_structure
+- experimental_data
+publications:
+- 10.1080/1062936x.2023.2254225
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

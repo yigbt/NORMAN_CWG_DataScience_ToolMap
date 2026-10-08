@@ -1,0 +1,16 @@
+id: in-silico-endocrine-activity-review
+name: In silico prediction of endocrine activity (review)
+kind: review
+description: Review of computational toxicology advances for early identification and prioritisation of
+  endocrine-disrupting chemicals.
+endpoints:
+- endocrine_moa
+research_questions:
+- rq-endocrine-moa
+publications:
+- 10.1016/j.tem.2025.09.011
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,21 @@
+id: ochem-nanoparticle-toxicity
+name: Toxicity models for metal and metal oxide nanoparticles on the OCHEM platform
+kind: model
+description: Modelling the toxicity of a large set of metal and metal oxide nanoparticles using the OCHEM
+  online modelling platform.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- qsar
+- machine_learning
+input_data:
+- experimental_data
+publications:
+- 10.1016/j.fct.2017.08.008
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,21 @@
+id: spatial-metadata-curation
+name: Automated curation of spatial metadata in monitoring data
+kind: tool
+description: Automated detection and correction of errors in spatial metadata (coordinates, locations)
+  of environmental monitoring data to make them usable for large-scale analytics and AI.
+endpoints:
+- data_curation
+research_questions:
+- cc-qa-qc-reference-data
+methods:
+- rule_based
+input_data:
+- monitoring_data
+- metadata
+publications:
+- 10.1016/j.ecoinf.2025.103038
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

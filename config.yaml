@@ -1,0 +1,6 @@
+# Site / repository settings.
+title: NORMAN Data Science Tool Map
+repo: yigbt/NORMAN_CWG_DataScience_ToolMap
+branch: main
+curators_contact: ""      # e-mail shown to people without a GitHub account (optional)
+survey_reference: NORMAN DS WG survey, Nov 2025 (37 responses)

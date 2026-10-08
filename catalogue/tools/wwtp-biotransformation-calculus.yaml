@@ -1,0 +1,23 @@
+id: wwtp-biotransformation-calculus
+name: Biotransformation calculus for wastewater treatment
+kind: model
+description: Mechanistic calculus of biodegradation driven by bioavailability, redox, geometry and microbial
+  acclimation, tested for thousands of contaminants across WWTPs.
+endpoints:
+- persistence
+- transformation_products
+research_questions:
+- rq-persistence
+- rq-transformation-products
+methods:
+- mechanistic
+input_data:
+- chemical_structure
+- monitoring_data
+publications:
+- 10.1071/en23033
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

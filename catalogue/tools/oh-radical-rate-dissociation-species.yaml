@@ -1,0 +1,21 @@
+id: oh-radical-rate-dissociation-species
+name: Hydroxyl radical rate constants for dissociation species of fluoroquinolones and sulfonamides
+kind: model
+description: Combined experimental and QSAR study of hydroxyl radical reaction rate constants for different
+  dissociation species of antibiotics.
+endpoints:
+- persistence
+research_questions:
+- rq-persistence
+methods:
+- qsar
+input_data:
+- chemical_structure
+- experimental_data
+publications:
+- 10.1016/j.watres.2019.115083
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,20 @@
+id: rt-logkow-predictor
+name: LogKow-based retention time predictor
+kind: model
+description: Simple retention time predictor based on LogKow, evaluated as a complementary tool for identifying
+  emerging contaminants in water.
+endpoints:
+- analytical_information
+research_questions:
+- rq-analytical-information
+methods:
+- statistical
+input_data:
+- chemical_structure
+publications:
+- 10.1016/j.talanta.2015.02.055
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

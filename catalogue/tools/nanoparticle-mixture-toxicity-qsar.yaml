@@ -1,0 +1,20 @@
+id: nanoparticle-mixture-toxicity-qsar
+name: ML-driven QSAR for mixture toxicity of nanoparticles
+kind: model
+description: Machine learning QSAR models predicting the toxicity of mixtures of engineered nanoparticles.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- qsar
+- machine_learning
+input_data:
+- experimental_data
+publications:
+- 10.1016/j.envint.2023.108025
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

@@ -1,0 +1,20 @@
+id: radical-h-abstraction-lfer
+name: Thermochemical descriptors for radical hydrogen abstraction rates
+kind: model
+description: Modified linear free-energy relationship unifying molecular descriptors to predict radical
+  hydrogen abstraction rate constants at low computational cost.
+endpoints:
+- persistence
+research_questions:
+- rq-persistence
+methods:
+- mechanistic
+input_data:
+- chemical_structure
+publications:
+- 10.1039/d0cp03750h
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

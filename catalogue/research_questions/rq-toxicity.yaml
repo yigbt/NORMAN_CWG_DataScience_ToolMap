@@ -1,0 +1,18 @@
+id: rq-toxicity
+title: How can the (eco)toxicity and hazard of emerging substances be predicted?
+short_title: Toxicity & hazard
+description: In silico prediction of (eco)toxicological effects and hazard classifications, including
+  for substances detected only by non-target screening.
+category: prediction
+endpoint: toxicity
+survey_demand:
+  q8_need: 18
+  q6_have_tool: 8
+  q8_respondents: 34
+roadmap:
+  status: not_started
+  priority: high
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

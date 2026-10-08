@@ -1,0 +1,14 @@
+id: rq-hrms-data-representation
+title: How can HRMS data be processed and represented for machine learning?
+short_title: HRMS data processing
+description: Data processing workflows and learned (latent-space) representations of HRMS data (raised
+  in survey Q9).
+category: prediction
+endpoint: hrms_data_processing
+roadmap:
+  status: not_started
+  priority: low
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

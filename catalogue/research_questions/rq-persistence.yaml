@@ -1,0 +1,17 @@
+id: rq-persistence
+title: How can persistence and degradability be predicted?
+short_title: Persistence
+description: Prediction of degradation rates, half-lives and removal in technical and natural systems.
+category: prediction
+endpoint: persistence
+survey_demand:
+  q8_need: 10
+  q6_have_tool: 7
+  q8_respondents: 34
+roadmap:
+  status: not_started
+  priority: medium
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

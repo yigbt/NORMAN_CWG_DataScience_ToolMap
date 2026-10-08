@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use the NORMAN Data Science Tool Map or its content, please cite it as below."
+type: dataset
+title: "NORMAN Data Science Tool Map: a community-curated catalogue of data science and AI tools for monitoring emerging environmental substances"
+authors:
+  - family-names: Schor
+    given-names: Jana
+    orcid: "https://orcid.org/0000-0003-1200-6234"
+  - family-names: Kruve-Vill
+    given-names: Anneli
+    orcid: "https://orcid.org/0000-0001-9725-3351"
+  - name: "NORMAN Data Science Working Group"
+abstract: >-
+  Community-curated catalogue and map of data science and AI tools for monitoring emerging
+  environmental substances, linking tools to research questions and highlighting gaps.
+  Initial content was derived from a survey of the NORMAN network (2025); all changes are
+  reviewed by curators and tracked in the repository history.
+keywords:
+  - NORMAN network
+  - emerging contaminants
+  - non-target screening
+  - machine learning
+  - cheminformatics
+  - environmental monitoring
+license:
+  - CC-BY-4.0
+  - MIT
+date-released: "2026-10-08"
+# Add a DOI once archived (e.g. via the Zenodo–GitHub integration):
+repository-code: "https://github.com/yigbt/NORMAN_CWG_DataScience_ToolMap"
+url: "https://yigbt.github.io/NORMAN_CWG_DataScience_ToolMap/"
+# doi: "10.5281/zenodo.XXXXXXX"

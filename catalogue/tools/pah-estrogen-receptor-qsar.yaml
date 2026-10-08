@@ -1,0 +1,22 @@
+id: pah-estrogen-receptor-qsar
+name: Docking and QSAR of PAH binding to the estrogen receptor
+kind: model
+description: Molecular docking and QSAR study of binding interactions between polycyclic aromatic hydrocarbons
+  and the estrogen receptor.
+endpoints:
+- toxicity
+- endocrine_moa
+research_questions:
+- rq-endocrine-moa
+- rq-toxicity
+methods:
+- qsar
+input_data:
+- chemical_structure
+publications:
+- 10.1016/j.ecoenv.2012.03.009
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

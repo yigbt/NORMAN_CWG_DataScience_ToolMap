@@ -1,0 +1,20 @@
+id: daphnia-nanotoxicity-ml
+name: In silico ML prediction of acute Daphnia magna nanotoxicity
+kind: model
+description: Machine learning tools for predicting acute toxicity of engineered nanomaterials to Daphnia
+  magna.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+methods:
+- machine_learning
+input_data:
+- experimental_data
+publications:
+- 10.1016/j.chemosphere.2022.135930
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

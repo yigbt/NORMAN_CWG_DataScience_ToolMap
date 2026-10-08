@@ -1,0 +1,13 @@
+id: cc-ai-risks-trust
+title: What are the risks and limits of AI for monitoring and policy-making, and how is trust built?
+short_title: AI risks & trust
+description: Risks and drawbacks of AI in environmental monitoring and policy-making, explainability and
+  regulatory acceptance (survey Q5, Q12).
+category: cross_cutting
+roadmap:
+  status: not_started
+  priority: low
+  updated: '2026-10-08'
+provenance:
+  source: survey-2025
+  added: '2026-10-08'

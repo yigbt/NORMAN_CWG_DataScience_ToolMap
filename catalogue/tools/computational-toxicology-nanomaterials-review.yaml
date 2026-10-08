@@ -1,0 +1,16 @@
+id: computational-toxicology-nanomaterials-review
+name: Computational toxicology for hazard assessment of metallic nanomaterials (review)
+kind: review
+description: Review of the use of computational toxicology in hazard assessment of metallic engineered
+  nanomaterials.
+endpoints:
+- toxicity
+research_questions:
+- rq-toxicity
+publications:
+- 10.3390/ijms18071504
+maturity: published
+verification: seeded_unverified
+provenance:
+  source: survey-2025-Q7
+  added: '2026-10-08'

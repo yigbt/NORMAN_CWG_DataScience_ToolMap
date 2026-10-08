@@ -1,0 +1,391 @@
+# Seed assignments for the tool map — REVIEW BEFORE SEEDING.
+#
+# Source: publications listed in survey Q7 (resolved via Crossref, abstracts via OpenAlex), plus one non-DOI poster.
+# One entry per publication; only patRoon 1.0/2.0 are merged (same software).
+# Categories (kind, endpoints, methods, input_data) were assigned by the WG coordinators from title/abstract;
+# no entry is linked to an individual survey response. All entries are flagged `seeded_unverified`
+# so that tool owners can correct them.
+#
+# Priorities of research questions are a PROPOSAL, derived from the survey supply/demand gap (notebook §5.3):
+#   high   = Q8 need − Q6 tools ≥ 10   (transformation products, semi-quantification, toxicity)
+#   medium = Q8 need ≥ 10 otherwise
+#   low    = rest
+# Survey counts (q8_need, q6_have_tool) are computed by seed_from_survey.py from the raw survey export.
+
+research_questions:
+  - id: rq-transformation-products
+    title: How can transformation products of emerging substances be predicted?
+    short_title: Transformation products
+    description: Predict (bio)transformation and abiotic transformation products and pathways to support suspect screening and risk assessment.
+    category: prediction
+    endpoint: transformation_products
+    priority: high
+  - id: rq-toxicity
+    title: How can the (eco)toxicity and hazard of emerging substances be predicted?
+    short_title: Toxicity & hazard
+    description: In silico prediction of (eco)toxicological effects and hazard classifications, including for substances detected only by non-target screening.
+    category: prediction
+    endpoint: toxicity
+    priority: high
+  - id: rq-semi-quantification
+    title: How can concentrations be estimated without reference standards?
+    short_title: Semi-quantification
+    description: Semi-quantification of substances detected by (LC-)HRMS non-target screening, e.g. via ionisation efficiency prediction.
+    category: prediction
+    endpoint: semi_quantification
+    priority: high
+  - id: rq-persistence
+    title: How can persistence and degradability be predicted?
+    short_title: Persistence
+    description: Prediction of degradation rates, half-lives and removal in technical and natural systems.
+    category: prediction
+    endpoint: persistence
+    priority: medium
+  - id: rq-chemical-properties
+    title: How can physico-chemical properties and molecular representations be predicted?
+    short_title: Chemical properties
+    description: Prediction of physico-chemical properties and development of molecular representations used by downstream models.
+    category: prediction
+    endpoint: chemical_properties
+    priority: medium
+  - id: rq-analytical-information
+    title: How can analytical information support identification in non-target screening?
+    short_title: RT / CCS / ionisation
+    description: Prediction of retention time, collision cross-section and ionisation amenability to increase identification confidence.
+    category: prediction
+    endpoint: analytical_information
+    priority: medium
+  - id: rq-bioaccumulation
+    title: How can bioaccumulation potential be predicted?
+    short_title: Bioaccumulation
+    description: Prediction of bioaccumulation and bioconcentration of emerging substances.
+    category: prediction
+    endpoint: bioaccumulation
+    priority: low
+  - id: rq-antimicrobial
+    title: How can antimicrobial properties be predicted?
+    short_title: Antimicrobial properties
+    description: Prediction of antimicrobial activity and resistance-relevant properties of substances.
+    category: prediction
+    endpoint: antimicrobial
+    priority: low
+  - id: rq-endocrine-moa
+    title: How can specific modes of action such as endocrine disruption be predicted?
+    short_title: Endocrine / mode of action
+    description: AI tools for specific modes of action, e.g. endocrine activity (raised as 'Other' in survey Q9).
+    category: prediction
+    endpoint: endocrine_moa
+    priority: low
+  - id: rq-hrms-data-representation
+    title: How can HRMS data be processed and represented for machine learning?
+    short_title: HRMS data processing
+    description: Data processing workflows and learned (latent-space) representations of HRMS data (raised in survey Q9).
+    category: prediction
+    endpoint: hrms_data_processing
+    priority: low
+  - id: cc-tool-benchmarking
+    title: How do existing tools compare on common benchmarks?
+    short_title: Tool benchmarking
+    description: Systematic comparison of available tools (e.g. toxicity or retention time predictors) on shared reference datasets (survey Q5).
+    category: cross_cutting
+    priority: medium
+  - id: cc-qa-qc-reference-data
+    title: Which QA/QC criteria and reference datasets should data science in environmental monitoring follow?
+    short_title: QA/QC & reference data
+    description: Best-practice parameters and criteria, high-quality reference and training datasets, and data curation (survey Q5; data access was the second most named barrier in Q12).
+    category: cross_cutting
+    endpoint: data_curation
+    priority: high
+  - id: cc-ai-risks-trust
+    title: What are the risks and limits of AI for monitoring and policy-making, and how is trust built?
+    short_title: AI risks & trust
+    description: Risks and drawbacks of AI in environmental monitoring and policy-making, explainability and regulatory acceptance (survey Q5, Q12).
+    category: cross_cutting
+    priority: low
+
+tools:
+  - id: hrms-mass-accuracy-suitability
+    name: Long-term HRMS mass accuracy system suitability evaluation
+    kind: workflow
+    description: Practical approach to evaluate and maintain mass accuracy of HRMS instruments over time for reliable non-target and suspect screening.
+    endpoints: [hrms_data_processing]
+    extra_research_questions: [cc-qa-qc-reference-data]
+    methods: [statistical]
+    input_data: [hrms_data]
+    publications: [10.1021/jasms.5c00128]
+  - id: pfas-nts-landfill-leachate
+    name: Suspect and non-target screening workflow for PFAS and halogenated substances
+    kind: workflow
+    description: Suspect and non-target screening of PFAS and other halogenated substances, including transformation products formed during electrochemical treatment of landfill leachate and groundwater.
+    endpoints: [hrms_data_processing, transformation_products]
+    input_data: [hrms_data]
+    publications: [10.1016/j.jhazmat.2024.136316]
+  - id: rt-ccs-mars-prediction
+    name: Retention time and CCS prediction with multiple adaptive regression splines
+    kind: model
+    description: Prediction of retention time and collision cross-section (protonated, deprotonated, sodiated) of emerging contaminants to support suspect and non-target screening by LC-IMS-HRMS.
+    endpoints: [analytical_information]
+    methods: [machine_learning]
+    input_data: [chemical_structure]
+    publications: [10.1021/acs.jcim.2c00847]
+  - id: ccs-ann-prediction
+    name: CCS prediction with artificial neural networks
+    kind: model
+    description: Artificial neural network prediction of collision cross-section values for small molecules, applied to pesticide residue analysis.
+    endpoints: [analytical_information]
+    methods: [machine_learning]
+    input_data: [chemical_structure]
+    publications: [10.1021/acs.analchem.7b00741]
+  - id: rt-logkow-predictor
+    name: LogKow-based retention time predictor
+    kind: model
+    description: Simple retention time predictor based on LogKow, evaluated as a complementary tool for identifying emerging contaminants in water.
+    endpoints: [analytical_information]
+    methods: [statistical]
+    input_data: [chemical_structure]
+    publications: [10.1016/j.talanta.2015.02.055]
+  - id: rt-ann-suspect-screening
+    name: ANN retention time prediction for large-scale suspect screening
+    kind: model
+    description: Artificial neural network retention time prediction combined with HRMS data analysis for suspect screening of large numbers of emerging contaminants in environmental waters.
+    endpoints: [analytical_information, hrms_data_processing]
+    methods: [machine_learning]
+    input_data: [chemical_structure, hrms_data]
+    publications: [10.1016/j.scitotenv.2015.08.078]
+  - id: ml-nanotoxicology-review
+    name: Machine learning in nanotoxicology (review)
+    kind: review
+    description: Critical review and perspective on machine learning methods for predicting adverse effects of nanomaterials.
+    endpoints: [toxicity]
+    methods: [machine_learning]
+    publications: [10.1021/acs.est.4c03328]
+  - id: ml-metallic-nanomaterials-aquatic
+    name: ML prediction of adverse effects of metallic nanomaterials on aquatic organisms
+    kind: model
+    description: Machine learning models predicting (eco)toxicity of metallic nanomaterials across aquatic species and environmental conditions.
+    endpoints: [toxicity]
+    methods: [machine_learning]
+    input_data: [experimental_data]
+    publications: [10.1021/acs.est.2c07039]
+  - id: nanoparticle-mixture-toxicity-qsar
+    name: ML-driven QSAR for mixture toxicity of nanoparticles
+    kind: model
+    description: Machine learning QSAR models predicting the toxicity of mixtures of engineered nanoparticles.
+    endpoints: [toxicity]
+    methods: [qsar, machine_learning]
+    input_data: [experimental_data]
+    publications: [10.1016/j.envint.2023.108025]
+  - id: daphnia-nanotoxicity-ml
+    name: In silico ML prediction of acute Daphnia magna nanotoxicity
+    kind: model
+    description: Machine learning tools for predicting acute toxicity of engineered nanomaterials to Daphnia magna.
+    endpoints: [toxicity]
+    methods: [machine_learning]
+    input_data: [experimental_data]
+    publications: [10.1016/j.chemosphere.2022.135930]
+  - id: meta-learning-qsar-aquatic-toxicity
+    name: Meta-learning QSAR models for aquatic toxicity
+    kind: model
+    description: Comparison of meta-learning QSAR approaches for low-resource aquatic toxicity regression tasks.
+    endpoints: [toxicity]
+    methods: [qsar, machine_learning]
+    input_data: [chemical_structure, experimental_data]
+    publications: [10.1021/acs.est.3c00334]
+  - id: nanoparticle-mixture-ecotoxicity-review
+    name: Ecotoxicity of mixtures of nanoparticles and hybrid nanomaterials (review)
+    kind: review
+    description: Review of the joint toxicity of multiple engineered nanoparticles and prospects for predicting mixture toxicity.
+    endpoints: [toxicity]
+    publications: [10.1021/acs.est.2c03333]
+  - id: quasi-qsar-daphnia-nanomaterials
+    name: Quasi-QSAR for Daphnia magna immobilisation by metal-based nanomaterials
+    kind: model
+    description: Quasi-QSAR models estimating Hill coefficients to predict the immobilisation response of Daphnia magna exposed to metal-based nanomaterials.
+    endpoints: [toxicity]
+    methods: [qsar]
+    input_data: [experimental_data]
+    publications: [10.1002/etc.5322]
+  - id: qsar-nanoparticles-review
+    name: QSAR approaches for nanoparticles (review)
+    kind: review
+    description: Review of challenges and approaches in applying QSAR methods to nanoscale systems.
+    endpoints: [toxicity]
+    methods: [qsar]
+    publications: [10.1177/026119291404200107]
+  - id: pah-estrogen-receptor-qsar
+    name: Docking and QSAR of PAH binding to the estrogen receptor
+    kind: model
+    description: Molecular docking and QSAR study of binding interactions between polycyclic aromatic hydrocarbons and the estrogen receptor.
+    endpoints: [endocrine_moa, toxicity]
+    methods: [qsar]
+    input_data: [chemical_structure]
+    publications: [10.1016/j.ecoenv.2012.03.009]
+  - id: oh-radical-rate-qsar
+    name: QSAR for aqueous hydroxyl radical reaction rate constants
+    kind: model
+    description: QSAR model predicting aqueous reaction rate constants of organic chemicals with hydroxyl radicals.
+    endpoints: [persistence]
+    methods: [qsar]
+    input_data: [chemical_structure]
+    publications: [10.1039/c6em00707d]
+  - id: oh-radical-rate-dissociation-species
+    name: Hydroxyl radical rate constants for dissociation species of fluoroquinolones and sulfonamides
+    kind: model
+    description: Combined experimental and QSAR study of hydroxyl radical reaction rate constants for different dissociation species of antibiotics.
+    endpoints: [persistence]
+    methods: [qsar]
+    input_data: [chemical_structure, experimental_data]
+    publications: [10.1016/j.watres.2019.115083]
+  - id: singlet-oxygen-rate-qspr
+    name: Singlet oxygen photooxygenation rate prediction
+    kind: model
+    description: Cheminformatics models predicting aqueous-phase photooxygenation rate constants by singlet oxygen from orbital energies, substituent factors and QSPR.
+    endpoints: [persistence]
+    methods: [qsar, mechanistic]
+    input_data: [chemical_structure]
+    publications: [10.1071/en17155]
+  - id: qppr-nanomaterials-directions
+    name: Directions in QPPR development for nanomaterial risk assessment
+    kind: review
+    description: Perspective on quantitative property-property relationships to complement predictive models used in nanomaterial risk assessment.
+    endpoints: [chemical_properties]
+    methods: [qsar]
+    publications: [10.1016/j.impact.2018.02.003]
+  - id: ochem-nanoparticle-toxicity
+    name: Toxicity models for metal and metal oxide nanoparticles on the OCHEM platform
+    kind: model
+    description: Modelling the toxicity of a large set of metal and metal oxide nanoparticles using the OCHEM online modelling platform.
+    endpoints: [toxicity]
+    methods: [qsar, machine_learning]
+    input_data: [experimental_data]
+    publications: [10.1016/j.fct.2017.08.008]
+  - id: computational-toxicology-nanomaterials-review
+    name: Computational toxicology for hazard assessment of metallic nanomaterials (review)
+    kind: review
+    description: Review of the use of computational toxicology in hazard assessment of metallic engineered nanomaterials.
+    endpoints: [toxicity]
+    publications: [10.3390/ijms18071504]
+  - id: graphene-ionic-liquid-mixture-toxicity
+    name: Joint algal toxicity of graphene and ionic liquid mixtures
+    kind: model
+    description: Assessment and prediction of the joint algal toxicity of binary mixtures of graphene and ionic liquids.
+    endpoints: [toxicity]
+    methods: [statistical]
+    input_data: [experimental_data]
+    publications: [10.1016/j.chemosphere.2017.07.035]
+  - id: ecotoxicity-recommender-system
+    name: Recommender-system prediction of species–chemical ecotoxicity
+    kind: model
+    description: Predicts ecotoxicity of chemicals for aquatic species with recommender system techniques, generalising across chemicals and species.
+    endpoints: [toxicity]
+    methods: [machine_learning]
+    input_data: [chemical_structure, experimental_data]
+    publications: [10.1080/1062936x.2023.2254225]
+  - id: ai-trust-chemical-risk-assessment
+    name: Trust in AI for chemical risk assessment (perspective)
+    kind: review
+    description: Analysis of why AI/ML models lag behind in regulatory chemical risk assessment and how trust can be built.
+    endpoints: [other]
+    extra_research_questions: [cc-ai-risks-trust]
+    methods: [explainable_ai]
+    publications: [10.1016/j.yrtph.2024.105589]
+  - id: in-silico-endocrine-activity-review
+    name: In silico prediction of endocrine activity (review)
+    kind: review
+    description: Review of computational toxicology advances for early identification and prioritisation of endocrine-disrupting chemicals.
+    endpoints: [endocrine_moa]
+    publications: [10.1016/j.tem.2025.09.011]
+  - id: patroon
+    name: patRoon
+    kind: workflow
+    description: Open-source R platform for mass spectrometry based non-target analysis, from feature detection to annotation, including automated transformation product screening (v2.0).
+    endpoints: [hrms_data_processing, transformation_products]
+    input_data: [hrms_data]
+    availability: [r_package, code_repository]
+    code_url: https://github.com/rickhelmus/patRoon
+    publications: [10.1186/s13321-020-00477-w, 10.21105/joss.04029]
+  - id: clp-h-statement-conformal-prediction
+    name: Conformal prediction of CLP H-statements
+    kind: model
+    description: Machine learning prediction of CLP hazard statements with confidence, using conformal prediction with N-grams and molecular fingerprints.
+    endpoints: [toxicity]
+    extra_research_questions: [cc-ai-risks-trust]
+    methods: [machine_learning]
+    input_data: [chemical_structure]
+    publications: [10.1016/j.crtox.2025.100242]
+  - id: hazard-prediction-toolbox
+    name: Hazard Prediction Toolbox
+    kind: tool
+    description: Toolbox for hazard prediction of chemicals (presented as a SETAC 2024 poster; no DOI yet).
+    endpoints: [toxicity]
+    methods: [machine_learning]
+    url: https://mistrasafechem.se/download/18.4710b08218f379fd242221b3/1715686503096/Hazard%20Prediction%20Toolbox%20-%20Setac%202024%20poster.pdf
+    maturity: prototype
+  - id: mlinvitrotox
+    name: MLinvitroTox
+    kind: tool
+    description: Automated Python pipeline for high-throughput, hazard-driven prioritisation of signals in HRMS/MS data, using hundreds of ML classifiers trained on in vitro toxicity data.
+    endpoints: [toxicity, hrms_data_processing]
+    methods: [machine_learning]
+    input_data: [hrms_data, chemical_structure]
+    availability: [python_package]
+    publications: [10.1186/s13321-025-00950-4]
+  - id: wwtp-micropollutant-removal-models
+    name: Benchmark data and models for micropollutant removal in wastewater treatment
+    kind: model
+    description: Benchmark dataset and structure-based models predicting micropollutant removal (breakthrough) in wastewater treatment plants as an indicator of persistence.
+    endpoints: [persistence]
+    extra_research_questions: [cc-tool-benchmarking]
+    methods: [machine_learning]
+    input_data: [chemical_structure, monitoring_data]
+    publications: [10.1021/acs.est.5c09314]
+  - id: spatial-metadata-curation
+    name: Automated curation of spatial metadata in monitoring data
+    kind: tool
+    description: Automated detection and correction of errors in spatial metadata (coordinates, locations) of environmental monitoring data to make them usable for large-scale analytics and AI.
+    endpoints: [data_curation]
+    extra_research_questions: [cc-qa-qc-reference-data]
+    methods: [rule_based]
+    input_data: [monitoring_data, metadata]
+    publications: [10.1016/j.ecoinf.2025.103038]
+  - id: biocatalysed-synthesis-planning
+    name: Data-driven biocatalysed synthesis planning
+    kind: model
+    description: Data-driven learning of enzymatic reactions for retrosynthetic planning, applicable to predicting enzyme-catalysed transformations.
+    endpoints: [transformation_products]
+    methods: [deep_learning]
+    input_data: [chemical_structure]
+    publications: [10.1038/s41467-022-28536-w]
+  - id: molecular-set-representation-learning
+    name: Molecular set representation learning
+    kind: model
+    description: Representing molecules as sets of atom invariants for learning, as an alternative to graph or string representations in downstream property models.
+    endpoints: [chemical_properties]
+    methods: [deep_learning]
+    input_data: [chemical_structure]
+    publications: [10.1038/s42256-024-00856-0]
+  - id: map4-fingerprint
+    name: MAP4 molecular fingerprint
+    kind: tool
+    description: MinHashed atom-pair fingerprint performing well for small molecules, biomolecules and the metabolome, for virtual screening and chemical space mapping.
+    endpoints: [chemical_properties]
+    input_data: [chemical_structure]
+    availability: [python_package, code_repository]
+    code_url: https://github.com/reymond-group/map4
+    publications: [10.1186/s13321-020-00445-4]
+  - id: wwtp-biotransformation-calculus
+    name: Biotransformation calculus for wastewater treatment
+    kind: model
+    description: Mechanistic calculus of biodegradation driven by bioavailability, redox, geometry and microbial acclimation, tested for thousands of contaminants across WWTPs.
+    endpoints: [persistence, transformation_products]
+    methods: [mechanistic]
+    input_data: [chemical_structure, monitoring_data]
+    publications: [10.1071/en23033]
+  - id: radical-h-abstraction-lfer
+    name: Thermochemical descriptors for radical hydrogen abstraction rates
+    kind: model
+    description: Modified linear free-energy relationship unifying molecular descriptors to predict radical hydrogen abstraction rate constants at low computational cost.
+    endpoints: [persistence]
+    methods: [mechanistic]
+    input_data: [chemical_structure]
+    publications: [10.1039/d0cp03750h]
