@@ -1,8 +1,12 @@
 # Validates every pull request (including manual edits from forks).
+# Bot pull requests do not trigger `pull_request` (GitHub blocks events from GITHUB_TOKEN), so the submission
+# workflow starts this one via workflow_dispatch on the submission branch; the "validate" check then
+# appears on the pull request and satisfies branch protection.
 name: Validate catalogue
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main]
 

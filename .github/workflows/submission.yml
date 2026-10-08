@@ -16,6 +16,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  actions: write
 
 jobs:
   submission:
@@ -67,6 +68,12 @@ jobs:
             - [ ] Categories (endpoints, research questions, maturity) are sensible
             - [ ] Contacts listed have agreed to be named
             - [ ] `verification` is appropriate (set `curator_checked` here if checked)
+      - name: Run the required validation check on the pull request
+        if: steps.pr.outputs.pull-request-operation == 'created' || steps.pr.outputs.pull-request-operation == 'updated'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.parse.outputs.branch }}
+        run: gh workflow run validate-pr.yml --repo "$GITHUB_REPOSITORY" --ref "$BRANCH"
       - name: Report back on the issue
         if: always()
         uses: actions/github-script@v7
