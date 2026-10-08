@@ -6,7 +6,7 @@ Usage:
 
 The issue body is untrusted input: it is size-limited, parsed with a safe YAML loader, validated against the
 JSON schema, and written only to catalogue/<type>/<validated id>.yaml. Provenance is set here, not by the
-submitter. Missing publications referenced by DOI are created from Crossref (unless --no-network).
+submitter. Missing publications referenced by DOI are created from Crossref or doi.org (unless --no-network).
 The summary JSON tells the workflow whether to open a PR or to comment the errors on the issue.
 """
 import argparse
@@ -15,7 +15,7 @@ import json
 import re
 from datetime import date
 
-from catalogue_lib import CATALOGUE, TYPES, crossref_publication, dump_yaml, entry_filename, load_catalogue, \
+from catalogue_lib import CATALOGUE, TYPES, doi_publication, dump_yaml, entry_filename, load_catalogue, \
     load_yaml, normalize, reference_errors, schema_errors, validators
 
 MAX_BODY = 30_000
@@ -120,11 +120,12 @@ def process(body, issue, user, network=True, write=True):
             if doi.lower() != doi:
                 errs.append(f"DOI {doi}: please write DOIs in lower case.")
             elif doi not in cat["publication"]:
-                pub = crossref_publication(doi) if network else None
+                pub, source = doi_publication(doi) if network else (None, None)
                 if not pub:
-                    errs.append(f"DOI {doi} is not in the catalogue and could not be resolved via Crossref.")
+                    errs.append(f"DOI {doi} is not in the catalogue and could not be resolved "
+                                "(checked Crossref and doi.org).")
                 else:
-                    pub["provenance"] = {"source": "submission (Crossref)", "added": today, "issue": issue}
+                    pub["provenance"] = {"source": f"submission ({source})", "added": today, "issue": issue}
                     errs += [f"publication {doi}: {e}" for e in schema_errors("publication", pub, vals)]
                     new_pubs.append(pub)
 

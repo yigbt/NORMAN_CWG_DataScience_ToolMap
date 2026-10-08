@@ -114,3 +114,18 @@ roadmap: {status: scoping, priority: low}
 """
     s = run(body(rq, entry_type="Research question"))
     assert s["ok"], s["errors"]
+
+
+def test_non_crossref_doi_resolved_via_doi_org(monkeypatch):
+    import catalogue_lib
+    csl = {"DOI": "10.5281/ZENODO.1234567", "title": "Some software", "publisher": "Zenodo",
+           "author": [{"family": "Doe", "given": "Jane"}], "issued": {"date-parts": [[2023, 7, 14]]}}
+    monkeypatch.setattr(catalogue_lib, "_fetch_json",
+                        lambda url, accept, timeout: None if "crossref" in url else csl)
+    r = process(body(TOOL + "publications: [10.5281/zenodo.1234567]\n"), issue=5, user="octocat", write=False)
+    assert r["ok"], r["errors"]
+    assert "catalogue/publications/10-5281-zenodo-1234567.yaml" in r["files"]
+    pub, source = catalogue_lib.doi_publication("10.5281/zenodo.1234567")
+    assert source == "doi.org"
+    assert pub == {"doi": "10.5281/zenodo.1234567", "title": "Some software", "authors": "Doe, J.",
+                   "journal": "Zenodo", "year": 2023}

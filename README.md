@@ -83,4 +83,4 @@ NORMAN Data Science Working Group.
 | Source code: `scripts/`, `site/` (except `site/data/`), `tests/`, `.github/` | [MIT](LICENSE) |
 
 Contributions submitted through issues or pull requests are published under these same licenses.
-Bibliographic metadata of publications comes from Crossref and is factual information.
+Bibliographic metadata of publications comes from Crossref or doi.org (DataCite) and is factual information.

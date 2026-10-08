@@ -126,30 +126,47 @@ def validate_catalogue(cat=None):
     return errs + reference_errors(cat)
 
 
-def crossref_publication(doi, timeout=20):
-    """Publication entry (without provenance) from Crossref, or None if the DOI does not resolve."""
-    import html
+def _fetch_json(url, accept, timeout):
     import urllib.error
-    import urllib.parse
     import urllib.request
-
-    def clean(s):
-        return " ".join(html.unescape(re.sub(r"<[^>]+>", "", s or "")).split())
-
-    req = urllib.request.Request(f"https://api.crossref.org/works/{urllib.parse.quote(doi)}",
-                                 headers={"User-Agent": "NORMAN-DS-tool-map/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "NORMAN-DS-tool-map/1.0", "Accept": accept})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            m = json.load(r)["message"]
-    except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
+            return json.load(r)
+    except (urllib.error.URLError, TimeoutError, ValueError):
         return None
-    names = [f"{a['family']}, {a['given'][:1]}." if a.get("given") else a.get("family", a.get("name", ""))
-             for a in m.get("author", [])]
+
+
+def doi_publication(doi, timeout=20):
+    """(publication entry without provenance, metadata source) for a DOI, or (None, None) if it does not resolve.
+
+    Crossref covers most journal articles; other registration agencies (DataCite: Zenodo, figshare, ...) are
+    reached through doi.org content negotiation, which returns the same CSL-JSON structure."""
+    import html
+    import urllib.parse
+
+    def clean(s):
+        if isinstance(s, list):
+            s = s[0] if s else ""
+        return " ".join(html.unescape(re.sub(r"<[^>]+>", "", s or "")).split())
+
+    quoted = urllib.parse.quote(doi)
+    m, source = (_fetch_json(f"https://api.crossref.org/works/{quoted}", "application/json", timeout) or {}).get(
+        "message"), "Crossref"
+    if not isinstance(m, dict):
+        m, source = _fetch_json(f"https://doi.org/{quoted}", "application/vnd.citationstyles.csl+json",
+                                timeout), "doi.org"
+    if not isinstance(m, dict) or not m.get("title"):
+        return None, None
+    names = [f"{a['family']}, {a['given'][:1]}." if a.get("given") and a.get("family")
+             else a.get("family") or a.get("literal") or a.get("name", "")
+             for a in m.get("author", []) if isinstance(a, dict)]
     authors = "; ".join(names[:3]) + " et al." if len(names) > 4 else "; ".join(names)
     year = ((m.get("issued") or {}).get("date-parts") or [[None]])[0][0]
-    return {"doi": m.get("DOI", doi).lower(), "title": clean((m.get("title") or [""])[0])[:500],
-            "authors": clean(authors)[:500], "journal": clean((m.get("container-title") or [""])[0])[:200],
-            "year": year}
+    pub = {"doi": str(m.get("DOI") or doi).lower(), "title": clean(m.get("title"))[:500],
+           "authors": clean(authors)[:500],
+           "journal": clean(m.get("container-title") or m.get("publisher"))[:200], "year": year}
+    return {k: v for k, v in pub.items() if v not in ("", None)}, source
 
 
 def normalize(etype, entry, schemas=None, vocab=None):

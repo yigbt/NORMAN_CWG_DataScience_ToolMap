@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Publication",
-  "description": "Bibliographic record (metadata from Crossref).",
+  "description": "Bibliographic record (metadata from Crossref or doi.org).",
   "type": "object",
   "additionalProperties": false,
   "required": ["doi", "title", "year", "provenance"],
